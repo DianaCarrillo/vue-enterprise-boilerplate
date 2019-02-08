@@ -1,8 +1,20 @@
 import Vue from 'vue'
 import App from './app'
+import ApolloClient from 'apollo-boost'
+import VueApollo from 'vue-apollo'
 import router from '@router'
 import store from '@state/store'
 import '@components/_globals'
+
+const apolloClient = new ApolloClient({
+  uri: 'https://api.graphcms.com/simple/v1/cji5ndlp34igt0194d6pzgkde',
+})
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
+
+Vue.use(VueApollo)
 
 // Don't warn about using the dev version of Vue in development.
 Vue.config.productionTip = process.env.NODE_ENV === 'production'
@@ -16,6 +28,7 @@ if (window.Cypress) {
 const app = new Vue({
   router,
   store,
+  apolloProvider,
   render: (h) => h(App),
 }).$mount('#app')
 
