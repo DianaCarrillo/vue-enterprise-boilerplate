@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <!-- <Speakers/> -->
-    <Movies />
+    <Continents />
   </div>
 </template>
 
 <script>
 // import Speakers from "./components/Speakers"
-import Movies from './components/Movies'
+import Continents from './components/Continents'
 
 export default {
   name: 'App',
   components: {
     // Speakers
-    Movies,
+    Continents,
   },
 }
 </script>
