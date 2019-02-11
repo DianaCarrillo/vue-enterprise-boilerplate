@@ -67,17 +67,17 @@ export default {
 </script>
 <style>
 li{
-  list-style-type: none;
-  margin: 1%
+  margin: 1%;
+  list-style-type: none
 
 }
 #name{
+  padding: 3%;
   margin: 3%;
   font-weight: bolder;
-  background-color: black;
   color: white;
-  border-color: black;
-  padding: 3%
+  background-color: black;
+  border-color: black
 }
 #code{
   margin-left: 1%
