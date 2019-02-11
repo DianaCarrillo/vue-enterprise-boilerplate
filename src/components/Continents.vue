@@ -1,5 +1,6 @@
 <template>
   <div>
+    <input v-model="search" type="text"  placeholder="Search continents, countries, languages">
       <template v-if="loading > 0">
         Loading...
       </template>
@@ -28,24 +29,27 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
 import Languages from './Languages.vue'
 import ContinentTitle from './ContinentTitle.vue'
+import gql from 'graphql-tag';
 
-const contQuery = gql`
-  query continents {
-    continents{
+// import { ALL_CONTINENTS_SEARCH_QUERY } from './queries'
+
+const ALL_CONTINENTS_SEARCH_QUERY = gql`
+query continents ($name: String!) {
+  continents (name: $name) {
+    name
+    code
+    countries {
       name
-      code
-      countries {
+      languages{
         name
-        languages{
-          name
-        }
       }
     }
   }
+}
 `
+
 export default {
   name: 'Continents',
   components: {
@@ -55,12 +59,21 @@ export default {
   data: () =>({
     continents: [],
     loading: 0,
-    country: ""
+    country: "",
+    search: ""
   }),
   apollo: {
     continents:{
-      query: contQuery,
-      loadingKey: 'loading'
+      query: ALL_CONTINENTS_SEARCH_QUERY,
+      loadingKey: 'loading',
+           variables () {
+        return {
+          name: this.search
+        }
+      },
+      skip (){
+        return !this.search
+      }
     }
   }
 }
@@ -70,6 +83,12 @@ li{
   list-style-type: none;
   margin: 1%
 
+}
+input {
+  height: 40px;
+  width: 80%;
+  padding: 5px;
+  font-size: 14px;
 }
 #name{
   margin: 3%;
