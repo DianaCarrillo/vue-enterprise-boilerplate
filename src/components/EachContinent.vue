@@ -1,9 +1,5 @@
 <template>
-  <ul v-if="continent">
-    <li id="name">
-        <p id="name-p">{{ continent.name }} </p>
-    </li>
-  </ul>
+    <p v-if="continent" id="name-p">{{ continent.name }} </p>
 </template>
 
 <script>
@@ -22,6 +18,7 @@ export default {
 #name-p{
   text-align: center;
   font-size: 35px;
+  margin-bottom: 70px;
 }
 
 </style>

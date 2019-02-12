@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button :id="id" @click="LanguagesFunction">{{country.name}} - {{ id }}</button>
+    <button :id="id" @click="LanguagesFunction"> {{ id }}. {{country.name}}</button>
     <Languages v-if="languages.length > 0" :languages="languages"/>
   </div>
 </template>
@@ -43,11 +43,14 @@
 
  <style>
  button{
-   margin-left: 60px;
-   margin-bottom: 20px;
-    width:180px;
+    margin-left: 60px;
+    margin-bottom: 20px;
+    width:260px;
     height:80px;
     background-color: white;
     font-size: 15px;
+    display: inline;
+    text-align:left;
+    padding-left: 20px;
  }
  </style>
