@@ -1,11 +1,8 @@
 <template>
   <div>
-    <p  id="color">{{c.name}}</p>
-    <p v-for=" language in c.languages"
-    id="blue"
-    :key="language.id">
-     {{ language.name }}
-    </p>
+   <!-- <ul>
+   {{ language.name }}
+    </ul> -->
   </div>
 </template>
 
@@ -16,7 +13,6 @@ const contQuery = gql`
   query continents {
     continents{
       countries {
-        name
         languages{
           name
         }
@@ -25,19 +21,14 @@ const contQuery = gql`
   }
 `
 export default {
-  name: "Languages",
+  name: "Info",
   props: {
-    c: {
+    language: {
       type: Object,
       required: true
     }
   },
-   data: () =>({
-    continents: [],
-    loading: 0,
-    language: ""
-  }),
-  apollo: {
+   apollo: {
     continents:{
       query: contQuery,
       loadingKey: 'loading'
@@ -45,12 +36,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#blue{
-  color: lawngreen
-}
-#color{
-  font-weight: bolder
-}
-</style>
