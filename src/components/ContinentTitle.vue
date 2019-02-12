@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h3>C O N T I N E N T S</h3>
+    <h3>W O R L D </h3>
 </div>
 </template>
 
@@ -13,7 +13,8 @@ export default {
 <style>
 h3{
   text-align: center;
-  color: rgb(255, 98, 182)
+  color: rgb(255, 98, 182);
+  font-size: 30px;
 }
 
 

@@ -2,31 +2,21 @@
   <div>
     <ContinentTitle/>
     <input v-model="searchCode" type="text" placeholder="Write a code continent e.g. EU, AS, AN, NA, SA, AF, OC">
-      <!-- <template v-if="loading > 0">
-        Loading...
-      </template> -->
       <template>
          <div>
-          <ul v-if="searchCode" >
-              <li id="name">
-                 <p id="code-p">{{ continent.code }} - {{ continent.name }}</p>
-               </li>
-          </ul>
-           <Country
-              v-for ="country in continent.countries"
-              :key="country.id"
-              :country="country"/>
+           <EachContinent v-if="continent"  :continent="continent"/>
          </div>
-
+        <Countries  v-if="continent" :continent="continent"/>
       </template>
   </div>
 </template>
 
 <script>
-import Country from './Country.vue'
+import EachContinent from './EachContinent.vue'
 import ContinentTitle from './ContinentTitle.vue'
+import Countries from './Countries.vue'
 import gql from 'graphql-tag';
-// import { ALL_CONTINENTS_SEARCH_QUERY } from './graphql'
+
 const ALL_CONTINENTS_SEARCH_QUERY = gql`
 query continent ($code: String!) {
   continent (code: $code){
@@ -44,17 +34,15 @@ query continent ($code: String!) {
 export default {
   name: 'Continents',
   components: {
-    Country,
-    ContinentTitle
+    // Country,
+    EachContinent,
+    ContinentTitle,
+    Countries
   },
   data() {
    return {
     continent: {},
-    loading: 0,
     search: "",
-    contCode: {
-      code: 'DEFAULTNAME'
-     }
     }
   },
   computed: {
@@ -65,17 +53,8 @@ export default {
       set(search){
         this.search = search.toUpperCase()
       }
-    }
+    },
   },
-  // methods: {
-  //   continentFuntion (){
-  //     this.continents.map(continent =>{
-  //       if(this.search === continent.name){
-  //      return continent
-  //       }
-  //     })
-  //   }
-  // },
   apollo: {
     continent:{
       query: ALL_CONTINENTS_SEARCH_QUERY,
@@ -105,7 +84,6 @@ input {
   width: 80%;
   padding: 5px;
   font-size: 14px;
-  text-align: center;
   margin-left: 10%
 }
 #name{
