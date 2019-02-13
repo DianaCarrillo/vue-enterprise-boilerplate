@@ -1,5 +1,5 @@
 <template>
- <div id="languages">
+ <div class="language">
   <p v-for="language in languages" id="language" :key="language.id">{{ language }}</p>
  </div>
 </template>

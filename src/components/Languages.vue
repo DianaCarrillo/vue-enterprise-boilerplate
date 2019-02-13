@@ -1,5 +1,6 @@
 <template>
  <div>
+  <h4 class="language">Languages: </h4>
   <EachLanguage :languages="languages"/>
  </div>
 </template>
@@ -21,9 +22,9 @@ export default {
 </script>
 
 <style>
-#language{
-  margin-left: 700px;
+.language{
+  margin-left: 500px;
   position: relative;
-  top: -120px;
+  top: -150px;
 }
 </style>

@@ -2,12 +2,10 @@
   <div>
     <ContinentTitle/>
     <input v-model="searchCode" type="text" placeholder="Write a code continent e.g. EU, AS, AN, NA, SA, AF, OC">
-      <template>
-         <div>
+      <Select v-if="continent" :continent="continent"/>
+
            <EachContinent v-if="continent"  :continent="continent"/>
-         </div>
         <Countries  v-if="continent" :continent="continent"/>
-      </template>
   </div>
 </template>
 
@@ -16,7 +14,7 @@ import EachContinent from './EachContinent.vue'
 import ContinentTitle from './ContinentTitle.vue'
 import Countries from './Countries.vue'
 import gql from 'graphql-tag';
-
+import Select from './Select.vue'
 const ALL_CONTINENTS_SEARCH_QUERY = gql`
 query continent ($code: String!) {
   continent (code: $code){
@@ -34,10 +32,10 @@ query continent ($code: String!) {
 export default {
   name: 'Continents',
   components: {
-    // Country,
     EachContinent,
     ContinentTitle,
-    Countries
+    Countries,
+    Select
   },
   data() {
    return {
@@ -73,21 +71,24 @@ li{
   margin: 1%;
 }
 #code-p{
-/* text-align: center; */
 font-size: 25px;
 }
 ul{
   list-style: none;
 }
-input {
+input  {
   height: 40px;
   width: 80%;
   padding: 5px;
   font-size: 14px;
   margin-left: 10%
 }
+select {
+  font-size: 14px;
+  margin-left: 10%;
+  margin-top: 1%
+}
 #name{
-  /* padding: 3%; */
   margin: 3%;
   font-weight: bolder;
   color:black;

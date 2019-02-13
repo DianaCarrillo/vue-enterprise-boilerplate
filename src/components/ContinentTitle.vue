@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h3 id="title">W O R L D </h3>
+    <h3 id="title">World's Language Data </h3>
 </div>
 </template>
 
@@ -16,6 +16,4 @@ h3{
   color: rgb(255, 98, 182);
   font-size: 30px;
 }
-
-
 </style>

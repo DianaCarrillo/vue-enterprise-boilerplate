@@ -1,6 +1,6 @@
 <template>
-  <div id="countries">
-    <!-- <p>Countries</p> -->
+  <div  id="countries">
+    <h4>Countries: </h4>
     <EachCountry  v-for="country in continent.countries" :key= "country.id" :country="country" />
   </div>
 </template>
@@ -23,10 +23,8 @@ export default {
 
 <style>
 #countries{
-  /* margin-left: 100px;
-  margin-right: 900px; */
+  margin-left: 60px;
   padding-top: 30px;
   padding-left: 50px;
-  /* background-color: pink */
 }
 </style>
